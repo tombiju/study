@@ -24,7 +24,7 @@ if __name__ == "__main__":
         'j': ['i'],
         'k': []
     }
-    assert hasPathDFS(adjacency_list, 'i', 'h') == True
-    assert hasPathBFS(adjacency_list, 'f', 'j') == False
-    assert hasPathBFS(adjacency_list, 'i', 'h') == True
-    assert hasPathBFS(adjacency_list, 'f', 'j') == False
+    assert hasPathDFS(adjacency_list, 'i', 'h')
+    assert not hasPathBFS(adjacency_list, 'f', 'j')
+    assert hasPathBFS(adjacency_list, 'i', 'h')
+    assert not hasPathBFS(adjacency_list, 'f', 'j')
