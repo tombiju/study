@@ -24,5 +24,29 @@ if __name__ == "__main__":
     ]
     adjacency_list = edges_to_adjacency_list(edges)
     assert adjacency_list == {'i': ['j', 'k'], 'j': ['i'], 'k': ['i', 'm', 'l'], 'm': ['k'], 'l': ['k'], 'o': ['n'], 'n': ['o']}
+    assert has_path_undirected(adjacency_list, 'j', 'm', set())
     assert has_path_undirected(adjacency_list, 'm', 'j', set())
+    assert has_path_undirected(adjacency_list, 'l', 'j', set())
     assert not has_path_undirected(adjacency_list, 'k', 'o', set())
+    assert not has_path_undirected(adjacency_list, 'i', 'o', set())
+    edges = [
+        ['b', 'a'],
+        ['c', 'a'],
+        ['b', 'c'],
+        ['q', 'r'],
+        ['q', 's'],
+        ['q', 'u'],
+        ['q', 't'],
+    ]
+    adjacency_list = edges_to_adjacency_list(edges)
+    assert has_path_undirected(adjacency_list, 'a', 'b', set())
+    assert has_path_undirected(adjacency_list, 'a', 'c', set())
+    assert has_path_undirected(adjacency_list, 'r', 't', set())
+    assert not has_path_undirected(adjacency_list, 'r', 'b', set())
+    edges = [
+        ['s', 'r'],
+        ['t', 'q'],
+        ['q', 'r'],
+    ]
+    adjacency_list = edges_to_adjacency_list(edges)
+    assert has_path_undirected(adjacency_list, 'r', 't', set())

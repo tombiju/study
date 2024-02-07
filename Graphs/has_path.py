@@ -24,7 +24,15 @@ if __name__ == "__main__":
         'j': ['i'],
         'k': []
     }
+    assert hasPathDFS(adjacency_list, 'f', 'k')
+    assert not hasPathBFS(adjacency_list, 'f', 'j')
     assert hasPathDFS(adjacency_list, 'i', 'h')
-    assert not hasPathBFS(adjacency_list, 'f', 'j')
-    assert hasPathBFS(adjacency_list, 'i', 'h')
-    assert not hasPathBFS(adjacency_list, 'f', 'j')
+    adjacency_list = {
+        'v': ['x', 'w'],
+        'w': [],
+        'x': [],
+        'y': ['z'],
+        'z': [],
+    }
+    assert hasPathDFS(adjacency_list, 'v', 'w')
+    assert not hasPathDFS(adjacency_list, 'v', 'z')
