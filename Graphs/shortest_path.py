@@ -8,7 +8,7 @@ def shortest_path(adjacency_list: list, start_node: str, target_node: str) -> in
         unvisited_neighbors = []
         for neighbor in adjacency_list[current_node[0]]:
             if neighbor not in visited:
-                visited.add(current_node)
+                visited.add(current_node[0])
                 unvisited_neighbors.append((neighbor, current_node[1] + 1))
         queue = queue + unvisited_neighbors
     return -1 # item doesn't exist or is not part of the connected graph of the start node
@@ -31,3 +31,13 @@ if __name__ == "__main__":
     adjacency_list = edges_to_adjacency_list(edges)
     assert shortest_path(adjacency_list, 'w', 'z') == 2
     assert shortest_path(adjacency_list, 'y', 'x') == 1
+    adjacency_list = edges_to_adjacency_list([
+        ['a', 'c'],
+        ['a', 'b'],
+        ['c', 'b'],
+        ['c', 'd'],
+        ['b', 'd'],
+        ['e', 'd'],
+        ['g', 'f']
+    ])
+    assert shortest_path(adjacency_list, 'b', 'g') == -1
