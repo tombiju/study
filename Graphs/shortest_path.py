@@ -1,14 +1,14 @@
 def shortest_path(adjacency_list: list, start_node: str, target_node: str) -> int:
     queue = [(start_node, 0)]
-    visited = set()
+    visited = { start_node }
     while queue:
         current_node = queue.pop(0)
-        visited.add(current_node)
         if current_node[0] == target_node:
             return current_node[1]
         unvisited_neighbors = []
         for neighbor in adjacency_list[current_node[0]]:
             if neighbor not in visited:
+                visited.add(current_node)
                 unvisited_neighbors.append((neighbor, current_node[1] + 1))
         queue = queue + unvisited_neighbors
     return -1 # item doesn't exist or is not part of the connected graph of the start node
